@@ -1,0 +1,83 @@
+[gd_scene load_steps=6 format=3 uid="uid://bvderco4b1g42"]
+
+[ext_resource type="Script" uid="uid://dns6pw7mytj7" path="res://Tela de Início/scripts (Tela de Início)/escolher_personagem.gd" id="1_xsysw"]
+[ext_resource type="FontFile" uid="uid://bldtxaiaxx772" path="res://delta rpg (assets)/minecraft/Minecraft.ttf" id="2_b6b74"]
+[ext_resource type="Texture2D" uid="uid://dbujpfr5bg6ba" path="res://Tela de Início/img_pixel_lagoa02.png" id="2_xsysw"]
+[ext_resource type="Texture2D" uid="uid://blwy4c4ekgkxu" path="res://delta rpg (assets)/Assets/Character_1-Sheet - Copia.png" id="3_5igbe"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xsysw"]
+bg_color = Color(0.99101, 0.454447, 4.04298e-06, 1)
+expand_margin_left = 8.0
+expand_margin_top = 11.0
+expand_margin_right = 10.0
+
+[node name="EscolherPersonagem" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xsysw")
+
+[node name="bg" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1163.0
+offset_bottom = 657.0
+texture = ExtResource("2_xsysw")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_b6b74")
+theme_override_font_sizes/font_size = 54
+theme_override_styles/normal = SubResource("StyleBoxFlat_xsysw")
+text = "Escolha seu personagem"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 500)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 185
+alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Girl" type="TextureButton" parent="VBoxContainer/HBoxContainer/MarginContainer"]
+custom_minimum_size = Vector2(500, 200)
+layout_mode = 2
+texture_normal = ExtResource("3_5igbe")
+stretch_mode = 0
+flip_h = true
+
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Boy" type="TextureButton" parent="VBoxContainer/HBoxContainer/MarginContainer2"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+texture_normal = ExtResource("3_5igbe")
+ignore_texture_size = true
+stretch_mode = 0
+
+[connection signal="mouse_entered" from="VBoxContainer/HBoxContainer/MarginContainer/Girl" to="." method="_on_girl_mouse_entered"]
+[connection signal="mouse_exited" from="VBoxContainer/HBoxContainer/MarginContainer/Girl" to="." method="_on_girl_mouse_exited"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/MarginContainer/Girl" to="." method="_on_girl_pressed"]
+[connection signal="mouse_entered" from="VBoxContainer/HBoxContainer/MarginContainer2/Boy" to="." method="_on_boy_mouse_entered"]
+[connection signal="mouse_exited" from="VBoxContainer/HBoxContainer/MarginContainer2/Boy" to="." method="_on_boy_mouse_exited"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/MarginContainer2/Boy" to="." method="_on_boy_pressed"]
