@@ -1,0 +1,85 @@
+[gd_scene load_steps=7 format=3 uid="uid://dnnmm0bbaldpd"]
+
+[ext_resource type="Script" uid="uid://bs86u6evvc6la" path="res://Tela de Início/scripts (Tela de Início)/escolher_cor_de_pele.gd" id="1_dvidx"]
+[ext_resource type="FontFile" uid="uid://bldtxaiaxx772" path="res://delta rpg (assets)/minecraft/Minecraft.ttf" id="2_dvidx"]
+[ext_resource type="Texture2D" uid="uid://bdhx147tq1ba" path="res://Tela de Início/img_pixel_delta03.png" id="2_npkl1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_npkl1"]
+bg_color = Color(0.99101, 0.454447, 4.04298e-06, 1)
+expand_margin_left = 8.0
+expand_margin_top = 11.0
+expand_margin_right = 10.0
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_0q1ot"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_4b30q"]
+
+[node name="EscolherCorDePele" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_dvidx")
+
+[node name="bg" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1163.0
+offset_bottom = 657.0
+texture = ExtResource("2_npkl1")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_dvidx")
+theme_override_font_sizes/font_size = 54
+theme_override_styles/normal = SubResource("StyleBoxFlat_npkl1")
+text = "Escolha a cor de pele"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 500)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 185
+alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Branco" type="TextureButton" parent="VBoxContainer/HBoxContainer/MarginContainer"]
+modulate = Color(1, 0.723378, 0.445266, 1)
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+texture_normal = SubResource("CanvasTexture_0q1ot")
+stretch_mode = 0
+flip_h = true
+
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Moreno" type="TextureButton" parent="VBoxContainer/HBoxContainer/MarginContainer2"]
+modulate = Color(0.265161, 0.129424, 0.000780151, 1)
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+texture_normal = SubResource("CanvasTexture_4b30q")
+stretch_mode = 0
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/MarginContainer/Branco" to="." method="_on_branco_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/MarginContainer2/Moreno" to="." method="_on_moreno_pressed"]
